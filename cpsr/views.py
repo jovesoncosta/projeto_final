@@ -63,6 +63,7 @@ def mlogout(request):
 
   ##Trocando a senha. Amém 3x 
   ##quebrado. funcional mas sem exibição da html
+  ##finalizado
 def alterar_senha(request):
     data = {}
     if request.method == "POST":
