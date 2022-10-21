@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% if request.user.is_authenticated %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <center>
+    <h1>{{ object.nome }}</h1>
+    </center>
+</head>
+
+<body>
+    <center>
+        <b>Local da Abordagem</b>
+        <br />
+        Rua: {{ object.ruaAbordagem }}
+        <br />
+        Bairro: {{ object.bairroAbordagem }}
+        <br />
+        <b>Dados Pessoais</b>
+        <br />
+        Nome: {{ object.nome }}
+        <br />
+        Apelido: {{ object.apelido }}
+        <br />
+        Idade: {{ object.idade }}
+        <br />
+        Sexo: {{ object.sexo }}
+        <br />
+        Cor: {{ object.cor }}
+        <br />    
+        Naturalidade: {{ object.naturalidade }}
+        <br />
+        Nome da Mãe: {{ object.nomeMAe }}
+        <br />
+        Nome do Pai: {{ object.nomePai }}
+        <br />
+        <b>Documentos</b>
+        <br />
+        RG: {{ object.rg }}
+        <br />
+        CPF: {{ object.cpf }}
+        <br />
+        Cartão SUS: {{ object.cartaoSus }}
+        <br />
+        Cad Único: {{ object.cadUnico }}
+        <br />
+        Tempo em Manaus: {{ object.tempoManaus}}
+        <br />
+        <b>Informações Adicionais</b>
+        <br />
+        Última alteração: {{ object.last_update }}
+        <br />
+        Data de Cadastro: {{ object.timestamp }}
+        <br />
+    </center>
+
+</body>
+
+
+{% else %}
+Acesso Negado! Realize o login para continuar.
+
+{% endif %}
+
+{% endblock %}

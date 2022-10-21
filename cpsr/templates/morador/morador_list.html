@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
+{% if request.user.is_authenticated %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Cadastros de Pessoas em Situação de Rua</h1>
+<input class="btn btn-primary" type="submit" onclick="location.href = '{% url 'morador:create' %}'" value="Criar novo Cadastro">
+<div class="col-13 col-sm-11 col-lg-8 col-xl-8">
+    <br>
+<table class="table">
+    <tr>
+        <th>Nome</th>     
+        <th>Idade</th>
+        <th>Bairro</th>
+        <th>Data de Cadastro</th>
+        <th>Data de Atualização</th>
+        <th>Ação</th>
+    </tr>
+    <tr>
+    {% for morador in object_list %}
+    <td>{{ morador.nome }}</td>
+    <td>{{ morador.idade }}</td>
+    <td>{{ morador.bairroAbordagem }}</td>
+    <td>{{ morador.timestamp }}</td>
+    <td>{{ morador.last_update }}</td>
+    <td><a class="btn btn-primary" href="{% url 'morador:update' pk=morador.id %}">Editar</a>
+        <a class="btn btn-primary" href="{% url 'morador:detail' pk=morador.id %}">Visualizar</a> 
+        <a class="btn btn-danger" href="{% url 'morador:delete' pk=morador.id %}">Excluir</a>
+    </td>
+    </tr>
+    {% endfor %}
+</table>
+    
+</div>
+    
+</body>
+
+
+{% else %}
+Acesso Negado! Realize o login para continuar.
+
+{% endif %}
+
+{% endblock %}

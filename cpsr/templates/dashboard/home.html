@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <div class="titulo">
+        <h3>Cadastro de Pessoas em Situação de Rua - CPSR</h3>
+      </div>
+      <div class="container d-flex justify-content-center box-home">
+        <div style="width: 30%">
+            <img
+          src="{% static '/img/cadastro.jpg' %}"
+          class="img-fluid"
+          alt=""
+        />
+        <a href="/morador/create/" style="text-decoration: none;">
+          <h3>
+            Cadastro de Pessoas
+          </h3>
+        </a>
+    </div>
+    <div style="width: 30%;">
+        <img
+          src="{% static '/img/relatorios.jpg' %}"
+          class="img-fluid"
+          alt=""
+        />
+        <a href="/morador/" style="text-decoration: none;">
+          <h3>
+            Relatórios
+          </h3>
+        </a>
+    </div>
+</div>
+
+    {% else %}
+    Acesso Negado! Realize o login para continuar.
+    {% endif %}
+
+    
+{% endblock %}
